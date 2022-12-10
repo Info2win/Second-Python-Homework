@@ -75,7 +75,7 @@ def searchStudent() -> None:
     firstNameList : List[str] = []
     lastNameList: List[str] = []
     isValid: bool = False
-    indexes: List[int] = []
+    indices: List[int] = []
     studentName = (input("Who are you searching for? ")).lower()
     namesList: List[Tuple[str,str]] =  list(studentDictonary.keys())
     for person in namesList:
@@ -83,18 +83,18 @@ def searchStudent() -> None:
         lastNameList.append(person[1])
     for person in namesList:
         if studentName in firstNameList:
-            if indexes != [i for i, student in enumerate(firstNameList) if student == studentName]:
+            if indices != [i for i, student in enumerate(firstNameList) if student == studentName]:
                 isValid = True
-                indexes = [i for i, student in enumerate(firstNameList) if student == studentName]
+                indices = [i for i, student in enumerate(firstNameList) if student == studentName]
         if studentName in lastNameList:
-            if indexes != [i for i, student in enumerate(lastNameList) if student == studentName]:
+            if indices != [i for i, student in enumerate(lastNameList) if student == studentName]:
                 isValid = True
-                indexes = [i for i, student in enumerate(lastNameList) if student == studentName]
+                indices = [i for i, student in enumerate(lastNameList) if student == studentName]
     if not isValid:
         print("Invalid input! Please input a student first name or last name.")
         searchStudent()
     else:
-        for index in indexes:
+        for index in indices:
             print(firstNameList[index] , lastNameList[index] , "received" , studentDictonary[(firstNameList[index],lastNameList[index])])
 
 main()
